@@ -5,10 +5,10 @@ FROM easytier/easytier:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 # 更新系统并安装必要的软件包
-RUN apt-get update
-RUN apt-get install -y --no-install-recommends \
+RUN apk update
+RUN apk install -y --no-install-recommends \
     wget unzip systemd \
-    && apt-get clean \
+    && apk clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # 将当前目录的所有文件复制到容器的 /opt 目录下
