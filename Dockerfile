@@ -20,8 +20,6 @@ WORKDIR /root
 # 设置执行权限
 RUN chmod +x /club/entrypoint.sh
 
-RUN wget -O /tmp/easytier.sh "https://raw.githubusercontent.com/EasyTier/EasyTier/main/script/install.sh" && sudo bash /tmp/easytier.sh install --gh-proxy https://ghfast.top/
-
 # 设置入口点
 ENTRYPOINT ["/club/entrypoint.sh"]
 

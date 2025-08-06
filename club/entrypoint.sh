@@ -11,6 +11,11 @@ if [ ! -f "/root/init/.initialized" ]; then
 
     cp -r /club/configs/supervisord.conf /root/supervisord/supervisord.conf
 
+    wget --no-check-certificate -O /tmp/easytier.sh "https://raw.githubusercontent.com/EasyTier/EasyTier/main/script/install.sh" && sudo bash /tmp/easytier.sh install --gh-proxy https://ghfast.top/
+
+    echo "安装 easytier 成功，准备启动..."
+    systemctl start easytier@default
+
     # 创建标记文件，表示已初始化
     touch /root/init/.initialized
     echo "初始化完成"
