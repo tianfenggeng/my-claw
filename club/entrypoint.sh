@@ -9,11 +9,7 @@ mkdir -p /root/init
 if [ ! -f "/root/init/.initialized" ]; then
     echo "首次启动，执行初始化操作..."
 
-    # 创建必要的目录
-    mkdir -p /root/supervisord
-
-    # 复制必要的二进制文件和配置
-    # cp -r /club/config/default.conf /root/opt/easytier/config/default.conf
+    cp -r /club/configs/supervisord.conf /root/supervisord/supervisord.conf
 
     # 创建标记文件，表示已初始化
     touch /root/init/.initialized
@@ -24,5 +20,5 @@ fi
 
 # 每次启动时都要执行的操作
 
-# 执行传入的命令，通常是启动
+# 执行传入的命令，通常是启动 supervisord
 exec "$@"

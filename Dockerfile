@@ -1,23 +1,29 @@
 # 使用较小的基础镜像
-FROM easytier/easytier:latest
+FROM ubuntu:22.04
 
 # 设置环境变量，避免交互式安装
 ENV DEBIAN_FRONTEND=noninteractive
 
 # 更新系统并安装必要的软件包
-RUN apk update
-RUN apk add \
-    wget unzip \
+RUN apt-get update
+RUN apt-get install -y --no-install-recommends \
+    wget unzip systemd vim sudo curl \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# 将当前目录的所有文件复制到容器的 /opt 目录下
-COPY ./opt/entrypoint.sh /opt/entrypoint.sh
+
+COPY ./club/entrypoint.sh /club/entrypoint.sh
 
 # 设置工作目录
 WORKDIR /root
 
 # 设置执行权限
-RUN chmod +x /opt/entrypoint.sh
+RUN chmod +x /club/entrypoint.sh
+
+RUN wget -O /tmp/easytier.sh "https://raw.githubusercontent.com/EasyTier/EasyTier/main/script/install.sh" && sudo bash /tmp/easytier.sh install --gh-proxy https://ghfast.top/
 
 # 设置入口点
-ENTRYPOINT ["/opt/entrypoint.sh"]
+ENTRYPOINT ["/club/entrypoint.sh"]
+
+# 设置默认命令
+# CMD ["/usr/bin/supervisord", "-n", "-c", "/root/supervisord/supervisord.conf"]
