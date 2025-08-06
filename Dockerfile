@@ -6,9 +6,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # 更新系统并安装必要的软件包
 RUN apk update
-RUN apk install -y --no-install-recommends \
+RUN apk add \
     wget unzip systemd \
-    && apk clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # 将当前目录的所有文件复制到容器的 /opt 目录下
