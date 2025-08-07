@@ -14,6 +14,7 @@ if [ ! -f "/root/init/.initialized" ]; then
         wget --no-check-certificate -O /tmp/easytier.sh "https://raw.githubusercontent.com/EasyTier/EasyTier/main/script/install.sh" && sudo bash /tmp/easytier.sh install --gh-proxy https://ghfast.top/
     else
         sudo bash /tmp/easytier.sh install --gh-proxy https://ghfast.top/
+    fi
     echo "安装 easytier 成功，准备启动..."
     systemctl start easytier@default
 
