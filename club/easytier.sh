@@ -202,6 +202,7 @@ INSTALL() {
   LATEST_VERSION=$(echo "$RESPONSE" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
   LATEST_VERSION=$(echo "$LATEST_VERSION" | tr -d '[:space:]')
 
+  echo -e "check latest version:${LATEST_VERSION}"
   if [ -z "$LATEST_VERSION" ]; then
     echo -e "\r\n${RED_COLOR}Opus${RES}, failure to get latest version. Check your internet\r\nOr try ${GREEN_COLOR}install by hand${RES}\r\n"
     exit 1
