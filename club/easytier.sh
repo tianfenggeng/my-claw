@@ -204,8 +204,7 @@ INSTALL() {
 
   echo -e "check latest version:${LATEST_VERSION}"
   if [ -z "$LATEST_VERSION" ]; then
-    echo -e "\r\n${RED_COLOR}Opus${RES}, failure to get latest version. Check your internet\r\nOr try ${GREEN_COLOR}install by hand${RES}\r\n"
-    exit 1
+    LATEST_VERSION = "v2.3.2"
   fi
 
   # Download
