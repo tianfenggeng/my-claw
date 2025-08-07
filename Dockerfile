@@ -6,8 +6,12 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 # 更新系统并安装必要的软件包
 RUN apt-get update
+# RUN apt-get install -y --no-install-recommends \
+#     wget unzip systemd vim sudo curl \
+#     && apt-get clean \
+#     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 RUN apt-get install -y --no-install-recommends \
-    wget unzip systemd vim sudo curl \
+    wget unzip systemd sudo curl \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
