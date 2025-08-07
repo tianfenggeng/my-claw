@@ -204,7 +204,7 @@ INSTALL() {
 
   echo -e "check latest version:${LATEST_VERSION}"
   if [ -z "$LATEST_VERSION" ]; then
-    LATEST_VERSION = "v2.3.2"
+    LATEST_VERSION="v2.3.2"
   fi
 
   # Download
