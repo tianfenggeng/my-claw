@@ -18,6 +18,7 @@ RUN apt-get install -y --no-install-recommends \
 
 COPY ./club/entrypoint.sh /club/entrypoint.sh
 COPY ./club/easytier.sh /tmp/easytier.sh
+COPY ./club/easytier_tmp_install.zip /tmp/easytier_tmp_install.zip
 
 # 设置工作目录
 WORKDIR /root
