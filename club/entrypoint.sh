@@ -9,8 +9,11 @@ mkdir -p /root/init
 if [ ! -f "/root/init/.initialized" ]; then
     echo "首次启动，执行初始化操作..."
 
-    wget --no-check-certificate -O /tmp/easytier.sh "https://raw.githubusercontent.com/EasyTier/EasyTier/main/script/install.sh" && sudo bash /tmp/easytier.sh install --gh-proxy https://ghfast.top/
-
+    if [ ! -f "/tmp/easytier.sh"]; then
+        echo "download easytier.sh"
+        wget --no-check-certificate -O /tmp/easytier.sh "https://raw.githubusercontent.com/EasyTier/EasyTier/main/script/install.sh" && sudo bash /tmp/easytier.sh install --gh-proxy https://ghfast.top/
+    else
+        sudo bash /tmp/easytier.sh install --gh-proxy https://ghfast.top/
     echo "安装 easytier 成功，准备启动..."
     systemctl start easytier@default
 
