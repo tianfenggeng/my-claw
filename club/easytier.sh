@@ -205,15 +205,16 @@ INSTALL() {
   echo -e "check latest version:${LATEST_VERSION}"
   if [ -z "$LATEST_VERSION" ]; then
     LATEST_VERSION="v2.3.2"
+    cp /tmp/image_easytier_tmp_install.zip /tmp/easytier_tmp_install.zip
+  else
+    # Download
+    echo -e "\r\n${GREEN_COLOR}Downloading EasyTier $LATEST_VERSION ...${RES}"
+    rm -rf /tmp/easytier_tmp_install.zip
+    BASE_URL="https://github.com/EasyTier/EasyTier/releases/latest/download/easytier-linux-${ARCH}-${LATEST_VERSION}.zip"
+    DOWNLOAD_URL=$($NO_GH_PROXY && echo "$BASE_URL" || echo "${GH_PROXY}${BASE_URL}")
+    echo -e "Download URL: ${GREEN_COLOR}${DOWNLOAD_URL}${RES}"
+    curl -L ${DOWNLOAD_URL} -o /tmp/easytier_tmp_install.zip $CURL_BAR
   fi
-
-  # Download
-  echo -e "\r\n${GREEN_COLOR}Downloading EasyTier $LATEST_VERSION ...${RES}"
-  rm -rf /tmp/easytier_tmp_install.zip
-  BASE_URL="https://github.com/EasyTier/EasyTier/releases/latest/download/easytier-linux-${ARCH}-${LATEST_VERSION}.zip"
-  DOWNLOAD_URL=$($NO_GH_PROXY && echo "$BASE_URL" || echo "${GH_PROXY}${BASE_URL}")
-  echo -e "Download URL: ${GREEN_COLOR}${DOWNLOAD_URL}${RES}"
-  curl -L ${DOWNLOAD_URL} -o /tmp/easytier_tmp_install.zip $CURL_BAR
 
   # Unzip resource
   echo -e "\r\n${GREEN_COLOR}Unzip resource ...${RES}"
